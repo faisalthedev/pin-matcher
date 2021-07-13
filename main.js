@@ -6,12 +6,12 @@ const successMsg = document.querySelector("#success");
 const numbers = document.querySelector(".numbers");
 const pinDisplay = document.querySelector("#pinDisplay");
 const submitBtn = document.querySelector(".submit-btn");
-const clearBtn = document.querySelector("#clear");
 
 // Hide both
 warningMsg.style.display = "none";
 successMsg.style.display = "none";
 
+// Generated Pin
 generateBtn.addEventListener("click", () => {
 	let pinNumber = Math.floor(100000 + Math.random() * 900000);
 	pinNumber = pinNumber.toString().substring(0, 4);
@@ -19,21 +19,20 @@ generateBtn.addEventListener("click", () => {
 	pinInput.value = pinNumber;
 });
 
-// Clear the typed pin
-clearBtn.addEventListener("click", (e) => {
-	pinDisplay.value = 0;
-});
-
+// Display Typed Pin
 numbers.addEventListener("click", (e) => {
 	if (e.target.matches(".button")) {
 		const keyNumber = e.target.textContent;
 
-		if (keyNumber != "C") {
+		if (keyNumber !== "C" && keyNumber !== "<") {
 			if (pinDisplay.value === "0") {
 				pinDisplay.value = keyNumber;
 			} else {
 				pinDisplay.value += keyNumber;
 			}
+		} else {
+			// Reset pin
+			pinDisplay.value = 0;
 		}
 	}
 });
