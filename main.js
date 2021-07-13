@@ -37,10 +37,6 @@ numbers.addEventListener("click", (e) => {
 	}
 });
 
-// function matchPinNumber(generatedPin, typedPin) {
-//   parseNumber()
-// }
-
 function parseNumber(id) {
 	const value = id.value;
 	const number = parseInt(value);
